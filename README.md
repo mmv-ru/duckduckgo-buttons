@@ -1,6 +1,7 @@
 # DuckDuckGo to Google Button
+Forked from https://github.com/Lenny32/duckduckgo-google-button
 
-A userscript that adds a convenient Google search button to DuckDuckGo search results, allowing you to quickly search the same query on Google with one click.
+A userscript that adds a convenient Google & Yandex search buttons to DuckDuckGo search results, allowing you to quickly search the same query on Google with one click.
 
 ## Quick Install
 
@@ -29,7 +30,7 @@ A userscript that adds a convenient Google search button to DuckDuckGo search re
    - [Greasemonkey](https://www.greasespot.net/) (Firefox)
 
 2. Click the install link below:
-   - **[Install DuckDuckGo to Google Button](https://raw.githubusercontent.com/Lenny32/duckduckgo-google-button/main/duckduckgo-google-button.user.js)**
+   - **[Install DuckDuckGo to Google Button](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-google-button.user.js)**
 
 3. Your userscript manager will prompt you to install the script. Click "Install" or "Confirm"
 
@@ -43,7 +44,7 @@ A userscript that adds a convenient Google search button to DuckDuckGo search re
 
 3. Create a new script
 
-4. Copy the contents of [`duckduckgo-google-button.user.js`](https://raw.githubusercontent.com/Lenny32/duckduckgo-google-button/main/duckduckgo-google-button.user.js) and paste it into the editor
+4. Copy the contents of [`duckduckgo-google-button.user.js`](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-google-button.user.js) and paste it into the editor
 
 5. Save the script
 
@@ -75,7 +76,7 @@ A companion userscript that adds custom styling to Google search elements for en
 1. Make sure you have a userscript manager installed (see above)
 
 2. Click the install link below:
-   - **[Install Google Root](https://raw.githubusercontent.com/Lenny32/duckduckgo-google-button/main/google-root.user.js)**
+   - **[Install Google Root](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/google-root.user.js)**
 
 3. Your userscript manager will prompt you to install the script. Click "Install" or "Confirm"
 
@@ -89,7 +90,7 @@ A companion userscript that adds custom styling to Google search elements for en
 
 3. Create a new script
 
-4. Copy the contents of [`google-root.user.js`](https://raw.githubusercontent.com/Lenny32/duckduckgo-google-button/main/google-root.user.js) and paste it into the editor
+4. Copy the contents of [`google-root.user.js`](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/google-root.user.js) and paste it into the editor
 
 5. Save the script
 
