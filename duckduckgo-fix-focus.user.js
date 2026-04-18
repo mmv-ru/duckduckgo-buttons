@@ -2,7 +2,7 @@
 // @name         Fix Duckduckgo entry field lost focus on system hotkey (as Win-Space )
 // @namespace    https://github.com/mmv-ru/duckduckgo-buttons
 // @version      1.0
-// @description  Fix bug at duckduckgo.com - lost entry field focus on change keyboard laout
+// @description  Fix bug at duckduckgo.com - lost entry field focus on change keyboard layout
 // @author       MMV (Qwen assisted)
 // @match        https://duckduckgo.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=duckduckgo.com
