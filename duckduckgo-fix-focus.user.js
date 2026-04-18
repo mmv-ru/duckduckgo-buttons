@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Fix Duckduckgo entry field lost focus on system hotkey (as Win-Space )
+// @name         Fix DuckDuckGo entry field lost focus on system hotkey (as Win-Space )
 // @namespace    https://github.com/mmv-ru/duckduckgo-buttons
 // @version      1.0
 // @description  Fix bug at duckduckgo.com - lost entry field focus on change keyboard layout
