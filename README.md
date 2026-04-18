@@ -12,7 +12,7 @@ A userscript that adds a convenient Google & Yandex search buttons to DuckDuckGo
 - 
 - **[Google Root](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/google-root.user.js)** - Adds custom styling to Google search elements
 
-*Requires a userscript manager like [Tampermonkey](https://www.tampermonkey.net/) to be installed first.*
+*Requires a userscript manager like [Violentmonkey](https://violentmonkey.github.io/) or [Tampermonkey](https://www.tampermonkey.net/) to be installed first.*
 
 ---
 
