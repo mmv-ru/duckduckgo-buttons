@@ -14,113 +14,75 @@
 // @license      MIT
 // ==/UserScript==
 
-(function () {
+
+(function() {
     'use strict';
 
-    function addSearchButtons() {
-        // Если кнопки уже добавлены, выходим
-        if (document.querySelector('#tm-ddg-search-btn') && 
-            document.querySelector('#tm-yandex-search-btn')) return;
-
-        // Находим поле ввода Google (поддержка input и textarea)
-        const input = document.querySelector('input[name="q"], textarea[name="q"]');
-        if (!input) return;
-
-        // Создаём контейнер для кнопок, если его ещё нет
-        let btnContainer = document.querySelector('.tm-buttons-wrapper');
-        if (!btnContainer) {
-            btnContainer = document.createElement('div');
-            btnContainer.className = 'tm-buttons-wrapper';
-            btnContainer.style.display = 'inline-flex';
-            btnContainer.style.marginLeft = '10px';
-            btnContainer.style.alignItems = 'center';
-            // Вставляем сразу после поискового поля
-            input.after(btnContainer);
-        }
-
-        // 1️⃣ Внедряем CSS только один раз
-        if (!document.getElementById('tm-google-ext-style')) {
-            const style = document.createElement('style');
-            style.id = 'tm-google-ext-style';
-            style.textContent = `
-                .tm-ext-btn {
-                    margin-left: 6px;
-                    padding: 0 8px;
-                    border-radius: 999px;
-                    border: 1px solid transparent;
-                    cursor: pointer;
-                    font-size: 11px;
-                    height: 26px;
-                    background: transparent;
-                    white-space: nowrap;
-                    box-sizing: border-box;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #666;
-                    font-weight: 500;
-                    transition: all 0.2s ease;
-                    outline: none;
-                    user-select: none;
-                }
-                /* Лёгкий фон при наведении (как у элементов Google) */
-                .tm-ext-btn:hover {
-                    background: #f5f5f5;
-                }
-                /* HOVER: DuckDuckGo */
-                .tm-btn-ddg:hover {
-                    background: #DE5833;
-                    color: #fff;
-                    border-color: #DE5833;
-                    box-shadow: 0 2px 6px rgba(222, 88, 51, 0.3);
-                }
-                /* HOVER: Яндекс */
-                .tm-btn-yandex:hover {
-                    background: #FF0000;
-                    color: #fff;
-                    border-color: #FF0000;
-                    box-shadow: 0 2px 6px rgba(255, 0, 0, 0.3);
-                }
-                /* Адаптация под тёмную тему Google */
-                @media (prefers-color-scheme: dark) {
-                    .tm-ext-btn { color: #aaa; }
-                    .tm-ext-btn:hover { background: #333; }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        // 2️⃣ Функция создания кнопки
-        function createButton(id, extraClass, text, urlBuilder) {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.id = id;
-            btn.className = `tm-ext-btn ${extraClass}`;
-            btn.textContent = text;
-
-            btn.addEventListener('click', () => {
-                const q = input.value.trim();
-                if (!q) return;
-                window.open(urlBuilder(q), '_blank');
-            });
-
-            return btn;
-        }
-
-        // 3️⃣ Создаём и добавляем кнопки
-        const ddgBtn = createButton('tm-ddg-search-btn', 'tm-btn-ddg', 'DDG',
-            q => `https://duckduckgo.com/?q=${encodeURIComponent(q)}`);
-        
-        const yaBtn = createButton('tm-yandex-search-btn', 'tm-btn-yandex', 'Яндекс',
-            q => `https://yandex.ru/search/?text=${encodeURIComponent(q)}`);
-
-        btnContainer.appendChild(ddgBtn);
-        btnContainer.appendChild(yaBtn);
+    function getSearchInput() {
+        return document.querySelector('#search_form_input, #searchbox_input, input[name="q"]');
     }
 
-    // Наблюдатель + первичный запуск
-    const observer = new MutationObserver(addSearchButtons);
+    function setupFocusFix() {
+        const input = getSearchInput();
+        if (!input || input.dataset.focusFixAttached) return;
+        input.dataset.focusFixAttached = 'true';
+
+        let restoreTimeout = null;
+        let isMouseDown = false;
+        let isEscapeTriggered = false; // Флаг для Esc
+
+        // Отслеживаем мышь, чтобы не мешать кликам по подсказкам/странице
+        document.addEventListener('mousedown', () => { isMouseDown = true; });
+        document.addEventListener('mouseup', () => {
+            setTimeout(() => { isMouseDown = false; }, 50);
+        });
+
+        // Обработка Esc
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                isEscapeTriggered = true;
+                input.blur(); // Снимаем фокус
+            }
+        });
+
+        input.addEventListener('focusout', (e) => {
+            // 1. Если фокус ушёл из-за Esc → ничего не восстанавливаем
+            if (isEscapeTriggered) {
+                isEscapeTriggered = false;
+                clearTimeout(restoreTimeout);
+                return;
+            }
+
+            // 2. Если потеря фокуса вызвана кликом мыши → не вмешиваемся
+            if (isMouseDown) return;
+
+            // 3. Проверяем, куда ушёл фокус
+            const target = e.relatedTarget;
+            const lostToNowhere = !target || target === document.body || target === document.documentElement;
+
+            if (lostToNowhere) {
+                clearTimeout(restoreTimeout);
+                // Ждём, пока ОС закроет оверлей переключения раскладки
+                restoreTimeout = setTimeout(() => {
+                    const active = document.activeElement;
+                    if (active === document.body || active === document.documentElement) {
+                        input.focus();
+                    }
+                }, 60);
+            }
+        });
+
+        // Если пользователь вручную вернул фокус (Tab, клик) → отменяем таймер восстановления
+        document.addEventListener('focusin', () => {
+            clearTimeout(restoreTimeout);
+        });
+    }
+
+    // Адаптация под SPA-навигацию DDG (поиск без перезагрузки)
+    const observer = new MutationObserver(() => {
+        if (getSearchInput()) setupFocusFix();
+    });
     observer.observe(document.body, { childList: true, subtree: true });
 
-    addSearchButtons();
+    setupFocusFix();
 })();
