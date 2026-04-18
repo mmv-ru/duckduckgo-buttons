@@ -6,7 +6,8 @@ A userscript that adds a convenient Google & Yandex search buttons to DuckDuckGo
 ## Quick Install
 
 **Click to install:**
-- **[DuckDuckGo to Google Button](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-google-button.user.js)** - Adds a Google button to DuckDuckGo search
+- **[DuckDuckGo to Google & Yandex Buttons](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-google-button.user.js)** - Adds a Google and Yandex buttons to DuckDuckGo search
+- **[Google to Duckduckgo & Yandex Buttons](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/google-buttons.user.js)** - Adds a DuckDuckGo and Yandex buttons to Google search
 - **[Google Root](https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/google-root.user.js)** - Adds custom styling to Google search elements
 
 *Requires a userscript manager like [Tampermonkey](https://www.tampermonkey.net/) to be installed first.*
