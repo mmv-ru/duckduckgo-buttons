@@ -1,12 +1,11 @@
 // ==UserScript==
-// @name         Google to DDG & Yandex Buttons
+// @name         Fix Duckduckgo entry field lost focus on system hotkey (as Win-Space )
 // @namespace    https://github.com/mmv-ru/duckduckgo-buttons
 // @version      1.0
-// @description  Add DuckDuckGo and Yandex buttons to Google search
-// @author       MMV (Qwen)
-// @match        https://www.google.com/search?*
-// @match        https://www.google.com/
-// @icon         https://www.google.com/favicon.ico
+// @description  Fix bug at duckduckgo.com - lost entry field focus on change keyboard laout
+// @author       MMV (Qwen assisted)
+// @match        https://duckduckgo.com/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=duckduckgo.com
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-fix-focus.user.js
 // @downloadURL  https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-fix-focus.user.js
