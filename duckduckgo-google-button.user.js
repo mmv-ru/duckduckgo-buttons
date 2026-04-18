@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        DuckduckGo to Google & Yandex (Forked)
+// @name        DuckduckGo to Google & Yandex (Forked from Lenny32/duckduckgo-google-button)
 // @namespace   Violentmonkey Scripts
 // @match        https://duckduckgo.com/?q=*
 // @match        https://duckduckgo.com/?*&q=*
@@ -8,6 +8,9 @@
 // @version     1.0 18.04.2026, 21:06:40
 // @author      MMV (Lenny32)
 // @description Add a Google & Yandex buttons for direct redirection from DuckDuckGo search results (forked from Lenny32/duckduckgo-google-button)
+// @updateURL    https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-google-button.user.js
+// @downloadURL  https://raw.githubusercontent.com/mmv-ru/duckduckgo-buttons/main/duckduckgo-google-button.user.js
+// @supportURL   https://github.com/mmv-ru/duckduckgo-buttons/issues
 // @license      MIT
 // ==/UserScript==
 
