@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        DuckduckGo to Google & Yandex (Forked from Lenny32/duckduckgo-google-button)
-// @namespace   Violentmonkey Scripts
+// @namespace    https://github.com/mmv-ru/duckduckgo-buttons
 // @match        https://duckduckgo.com/?q=*
 // @match        https://duckduckgo.com/?*&q=*
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=duckduckgo.com

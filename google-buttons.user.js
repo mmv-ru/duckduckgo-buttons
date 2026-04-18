@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Google to DDG & Yandex Buttons
-// @namespace    https://github.com/Lenny32/google-multi-search
+// @namespace    https://github.com/mmv-ru/duckduckgo-buttons
 // @version      1.0
 // @description  Add DuckDuckGo and Yandex buttons to Google search
 // @author       MMV (Lenny32)
